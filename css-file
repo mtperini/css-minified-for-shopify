@@ -3,13 +3,10 @@
 Put your CSS or SCSS here
 */
 {% endcapture %}
-
-/* before minify: {{ content.size }} */
 {% assign content =  content | strip_newlines | split: " " | join: " " | split: "*/" %}
 {% assign new_content = "" %}
 {% for word in content %}
 	{% assign new_word = word | split: "/*" | first | strip %}
   	{% assign new_content = new_content | append: new_word %}
 {% endfor %}
-/*  after minify: {{ new_content.size }} */
 {{ new_content }}
